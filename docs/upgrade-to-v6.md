@@ -24,3 +24,15 @@ If you have relied on accessing sequelize operators via `Symbol.for('gt')` etc. 
 `Model.build` has been acting as proxy for `bulkBuild` and `new Model` for a while.
 
 Use `Model.bulkBuild` or `new Model` instead.
+
+### Removed method aliases for hooks
+
+In order to streamlike API all method style add hook functions have been removed.
+
+Before: `MyModel.beforeCreate(...)`
+After: `MyModel.addHook('beforeCreate', ...)`
+
+This also affects the `Transaction.afterCommit` method.
+
+Before: `transaction.afterCommit(...)`
+After: `transaction.addHook(...)`
